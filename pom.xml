@@ -18,7 +18,7 @@
         <flyway-db.user>root</flyway-db.user>
         <flyway-db.password>root</flyway-db.password>
         <flyway-db.url>jdbc:postgresql://localhost:5432/postgres</flyway-db.url>
-        <flyway-db.location>db.migration</flyway-db.location>
+        <flyway-db.location>db/migration</flyway-db.location>
     </properties>
     <dependencies>
         <dependency>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+<!--            <optional>true</optional>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

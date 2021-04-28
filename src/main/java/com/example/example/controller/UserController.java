@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UsersService usersService;
 
-    @GetMapping("/{id}")
-    public Users getUser(@PathVariable Integer id){
-        Users user = this.usersService.getUserById(id);
-        return user;
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Users> getUser(@PathVariable Long id){
+        Users users = this.usersService.getUserById(id);
+        if(users==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/hello")
@@ -26,6 +29,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> registerUser(@RequestBody UsersDto usersDto){
+        Users users = this.usersService.addUser(usersDto);
         return new ResponseEntity<>("User added", HttpStatus.CREATED);
     }
 }

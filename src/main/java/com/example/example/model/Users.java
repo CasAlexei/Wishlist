@@ -5,31 +5,35 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "t_users")
 public class Users {
 
     @Id
-    @Column(name = "user_id")
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
     @Column(name ="full_name")
     private String fullName;
     @Column(name ="email")
     private String email;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role_id")
+    private String roleId;
 
     public static Users from(UsersDto usersDto) {
         return builder()
                 .fullName(usersDto.getFullName())
                 .email(usersDto.getEmail())
+                .password(usersDto.getPassword())
+                .roleId(usersDto.getRoleId())
                 .build();
     }
 }

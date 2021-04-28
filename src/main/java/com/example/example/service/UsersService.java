@@ -14,21 +14,23 @@ public class UsersService {
 
     private final UsersRepository usersRepository;
 
-    public Users getUserById(long id){
+    public Users getUserById(Long id){
         log.info("IN UsersService getUserById {}", id);
         return usersRepository.findById(id).orElse(null);
     }
 
     public Users addUser(UsersDto usersDto){
-        Users user = new Users();
+        Users users = new Users();
 
         // need to check fullname and email if is correct
-        user.setEmail(usersDto.getEmail());
-        user.setFullName(usersDto.getFullName());
+        users.setEmail(usersDto.getEmail());
+        users.setFullName(usersDto.getFullName());
+        users.setPassword(usersDto.getPassword());
+        users.setRoleId(usersDto.getRoleId());
 
-        log.info("IN UsersService addUser {}", user.getFullName());
+        log.info("IN UsersService addUser {}", users.getFullName());
 
-        return usersRepository.save(user);
+        return usersRepository.save(users);
     }
 
 }
