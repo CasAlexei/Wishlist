@@ -22,11 +22,6 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/hello")
-    public String getUser(){
-        return "Hello my friend";
-    }
-
     @PostMapping("/login")
     public ResponseEntity<String> registerUser(@RequestBody UsersDto usersDto){
         Users users = this.usersService.addUser(usersDto);
