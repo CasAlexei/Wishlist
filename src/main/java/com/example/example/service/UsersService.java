@@ -22,7 +22,7 @@ public class UsersService {
     public Users addUser(UsersDto usersDto){
         Users users = new Users();
 
-        // need to check fullname and email if is correct
+        // need to check fullName and email if is correct
         users.setEmail(usersDto.getEmail());
         users.setFullName(usersDto.getFullName());
         users.setPassword(usersDto.getPassword());

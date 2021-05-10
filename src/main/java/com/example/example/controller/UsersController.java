@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-public class UserController {
+public class UsersController {
     private final UsersService usersService;
 
     @GetMapping("/user/{id}")
@@ -22,7 +22,7 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UsersDto usersDto){
         Users users = this.usersService.addUser(usersDto);
         return new ResponseEntity<>("User added", HttpStatus.CREATED);
